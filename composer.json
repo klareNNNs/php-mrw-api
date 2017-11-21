@@ -1,0 +1,22 @@
+{
+  "type": "project",
+  "license": "proprietary",
+  "minimum-stability": "beta",
+  "require": {
+    "php": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "php phars/phpunit.phar --color=always",
+    "test-coverage": "php phars/phpunit.phar --coverage-html coverage"
+  }
+}

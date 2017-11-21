@@ -1,21 +1,12 @@
 <?php
 
-namespace MRW;
+use PHPUnit\Framework\TestCase;
+use \MRW\Entity\Delivery;
 
-class ApiClientTest extends \PHPUnit_Framework_TestCase
+class ApiClientTest extends TestCase
 {
-    CONST FRANCHISECODE = '';
-    CONST SUBSCRIBERCODE = '';
-    CONST USER = '';
-    CONST PASSWORD = '';
-    CONST URL = 'https://sagec-test.mrw.es/MRWEnvio.asmx?WSDL';
-
-    /** @var  ApiClient */
-    private $client;
-
-    public function setUp()
+    public function testTestCool()
     {
-        $this->client = new ApiClient(new \SoapClient(self::URL),
-            self::FRANCHISECODE, self::SUBSCRIBERCODE, self::USER, self::PASSWORD);
+        $this->assertEquals(12, (new Delivery())->getNum());
     }
 }

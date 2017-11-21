@@ -1,0 +1,44 @@
+
+### System files
+.DS_Store
+.idea
+dump.rdb
+nbproject
+
+### Translations
+/locale/es_ES/LC_MESSAGES
+/locale/es_ES/js
+/locale/it_IT/LC_MESSAGES
+/locale/it_IT/js
+/locale/fr_FR/LC_MESSAGES
+/locale/fr_FR/js
+/locale/en_US/LC_MESSAGES
+/locale/en_US/js
+/locale/en_GB/LC_MESSAGES
+/locale/en_GB/js
+/locale/de_DE/LC_MESSAGES
+/locale/de_DE/js
+
+### Cache and logs
+/templates_c
+/banners/
+/tiendas
+/usuarios/
+/cache/
+*.log
+
+### Managed by Composer or NPM
+/vendor
+node_modules
+
+### Other
+banners
+coverage
+usuarios
+
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

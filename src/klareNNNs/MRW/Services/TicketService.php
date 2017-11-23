@@ -3,18 +3,18 @@
 namespace klareNNNs\MRW\Services;
 
 use klareNNNs\MRW\Entity\Delivery;
+use klareNNNs\MRW\Entity\AuthHeader;
 
 class TicketService
 {
-    public function getTicketUrl(Delivery $delivery): string
+    public function getTicketUrl(Delivery $delivery, AuthHeader $authHeader): string
     {
-        $franchise = substr($delivery->getRequestNumber(), 0, 5);
-        $subscriber = substr($delivery->getRequestNumber(), 5, 6);
-
         return $delivery->getUrl()
-            . '?Franq=' . $franchise
-            . '&Ab=' . $subscriber
-            . '&Dep=&Pwd=password&Usr=user'
+            . '?Franq=' . $authHeader->franchiseCode
+            . '&Ab=' . $authHeader->subscriberCode
+            . '&Dep=' . $authHeader->departmentCode
+            . '&Usr=' . $authHeader->userName
+            . '&Pwd=' . $authHeader->password
             . '&NumEnv=' . $delivery->getShippingNumber();
     }
 }

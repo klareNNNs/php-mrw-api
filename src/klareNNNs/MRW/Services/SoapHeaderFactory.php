@@ -7,10 +7,12 @@ use SoapHeader;
 
 class SoapHeaderFactory
 {
+    const NAMESPACE = 'http://www.mrw.es/';
+
     public static function create(AuthHeader $authHeader)
     {
-        $namespace = 'http://www.mrw.es/';
+        $soapHeader = new SoapHeader(self::NAMESPACE, 'AuthInfo', $authHeader);
 
-        return new SoapHeader($namespace, 'AuthInfo', $authHeader);
+        return $soapHeader;
     }
 }

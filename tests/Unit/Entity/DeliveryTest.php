@@ -5,9 +5,9 @@ use klareNNNs\MRW\Entity\Delivery;
 
 class DeliveryTest extends TestCase
 {
-    public function testTicketUrlIsString()
+    public function testCanConstructDelivery()
     {
-        $state = 1;
+        $state = '1';
         $message = 'Message';
         $requestNumber = '000666777';
         $shippingNumber = '77766600';

@@ -25,23 +25,25 @@ class SoapResponseFactory
 
     private static function validateFields($response): bool
     {
-        if (isset($response->TransmEnvioResult)) {
-            $result = $response->TransmEnvioResult;
-            if (!isset($result->Estado)) {
-                return false;
-            }
-            if (!isset($result->Mensaje)) {
-                return false;
-            }
-            if (!isset($result->NumeroSolicitud)) {
-                return false;
-            }
-            if (!isset($result->NumeroEnvio)) {
-                return false;
-            }
-            if (!isset($result->Url)) {
-                return false;
-            }
+        if (!isset($response->TransmEnvioResult)) {
+            return false;
+        }
+
+        $result = $response->TransmEnvioResult;
+        if (!isset($result->Estado)) {
+            return false;
+        }
+        if (!isset($result->Mensaje)) {
+            return false;
+        }
+        if (!isset($result->NumeroSolicitud)) {
+            return false;
+        }
+        if (!isset($result->NumeroEnvio)) {
+            return false;
+        }
+        if (!isset($result->Url)) {
+            return false;
         }
 
         return true;

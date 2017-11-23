@@ -7,9 +7,9 @@ use klareNNNs\MRW\Entity\Delivery;
 
 class SoapResponseFactory
 {
-    public static function create($response): Delivery
+    public static function create($response)
     {
-        if (static::validateFields($response)) {
+        if (!static::validateFields($response)) {
             throw new UnexpectedValueException('The Response has unexpected Values');
         }
         $result = $response->TransmEnvioResult;

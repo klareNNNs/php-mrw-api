@@ -12,7 +12,7 @@ class SoapResponseFactory
         if (static::validateFields($response)) {
             throw new UnexpectedValueException('The Response has unexpected Values');
         }
-        $result = $result = $response->TransmEnvioResult;
+        $result = $response->TransmEnvioResult;
 
         return new Delivery(
             $result->Estado,

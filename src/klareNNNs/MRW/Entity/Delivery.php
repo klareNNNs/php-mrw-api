@@ -45,13 +45,4 @@ class Delivery
     {
         return $this->url;
     }
-
-    public function getTicketUrl(): string
-    {
-        $franquicia = substr($this->getRequestNumber(), 0, 5);
-        $abonado = substr($this->getRequestNumber(), 5, 6);
-        $ticketUrl = $this->getUrl() . '?Franq=' . $franquicia . '&Ab=' . $abonado . '&Dep=&Pwd=password&Usr=user&NumEnv=' . $this->getShippingNumber();
-
-        return $ticketUrl;
-    }
 }

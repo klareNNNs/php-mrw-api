@@ -18,6 +18,6 @@
   "scripts": {
     "test": "php phars/phpunit.phar --color=always",
     "test-coverage": "php phars/phpunit.phar --coverage-html coverage",
-    "test-coverage-cmd": "php phars/phpunit.phar --coverage-text"
+    "test-coverage-cli": "php phars/phpunit.phar --coverage-text"
   }
 }

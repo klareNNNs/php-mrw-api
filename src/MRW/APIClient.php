@@ -2,6 +2,8 @@
 
 namespace MRW;
 
+use MRW\Entity\AuthHeader;
+use MRW\Entity\Delivery;
 use SoapHeader;
 use SoapClient;
 
@@ -14,9 +16,12 @@ class ApiClient
     private $password;
 
     public function __construct(
-        SoapClient $soapClient, string $franchiseCode, string $subscriberCode, string $user, string $password
-    )
-    {
+        SoapClient $soapClient,
+        string $franchiseCode,
+        string $subscriberCode,
+        string $user,
+        string $password
+    ) {
         $this->client = $soapClient;
         $this->franchiseCode = $franchiseCode;
         $this->subscriberCode = $subscriberCode;
@@ -26,35 +31,38 @@ class ApiClient
 
     public function createTransaction(array $request)
     {
-        $this->initSoapHeaders();
+        try {
+            $this->initSoapHeaders();
 
-        return $this->client->TransmEnvio($request);
+            $response = $this->client->__soapCall('TransmEnvio', $request);
+
+            return new Delivery($response->TransmEnvioResult->Estado, $response->TransmEnvioResult->Mensaje,
+                $response->TransmEnvioResult->NumeroSolicitud, $response->TransmEnvioResult->NumeroEnvio,
+                $response->TransmEnvioResult->Url);
+
+        } catch (\SoapFault $e) {
+            throw new \Exception();
+        }
     }
 
     private function initSoapHeaders()
     {
-        $namespace = 'mrw';
-        $auth = [
-            'CodigoFranquicia' => '02650',
-            'CodigoAbonado' => '051946',
-            'CodigoDepartamento' => '01',
-            'UserName' => '02650SAGECHAIER',
-            'Password' => '02650SAGECHAIER'
-        ];
-        $header = new SoapHeader($namespace, 'AuthInfo', $auth);
-        $this->client->__setSoapHeaders($header);
+        try {
+            $namespace = 'http://www.mrw.es/';
+            $auth = [
+                'CodigoFranquicia' => $this->franchiseCode,
+                'CodigoAbonado' => $this->subscriberCode,
+                'CodigoDepartamento' => '',
+                'UserName' => $this->user,
+                'Password' => $this->password
+            ];
 
-        /*
-        $this->client->he
-        <soap:Header>
-        <mrw:AuthInfo>
-        <mrw:CodigoFranquicia>String</mrw:CodigoFranquicia>
-        <mrw:CodigoAbonado>String</mrw:CodigoAbonado>
-        <mrw:CodigoDepartamento>String</mrw:CodigoDepartamento>
-        <mrw:UserName>String</mrw:UserName>
-        <mrw:Password>String</mrw:Password>
-        </mrw:AuthInfo>
-        </soap:Header>
-        */
+            $AuthHeader = new AuthHeader($auth);
+            $header = new SoapHeader($namespace, 'AuthInfo', $AuthHeader);
+            $this->client->__setSoapHeaders(array($header));
+
+        } catch (\Exception $e) {
+            throw new \Exception;
+        }
     }
 }

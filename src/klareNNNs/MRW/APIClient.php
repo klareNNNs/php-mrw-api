@@ -26,17 +26,11 @@ class ApiClient
 
     public function createTransaction(ServiceData $data, ShippingAddress $address, ShippingUser $user): Delivery
     {
-        try {
+        $this->client->__setSoapHeaders([SoapHeaderFactory::create($this->authHeader)]);
+        $request = SoapRequestFactory::create($data, $address, $user);
+        $response = $this->client->__soapCall(self::TRANSACTION_METHOD, $request);
 
-            $this->client->__setSoapHeaders([SoapHeaderFactory::create($this->authHeader)]);
-            $request = SoapRequestFactory::create($data, $address, $user);
-            $response = $this->client->__soapCall(self::TRANSACTION_METHOD, $request);
-
-            return SoapResponseFactory::create($response);
-
-        } catch (\SoapFault $e) {
-            throw new \Exception();
-        }
+        return SoapResponseFactory::create($response);
     }
 
 }

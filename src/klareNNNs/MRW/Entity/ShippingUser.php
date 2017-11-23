@@ -5,26 +5,26 @@ namespace klareNNNs\MRW\Entity;
 class ShippingUser
 {
     private $nif;
-    private $nombre;
-    private $telefono;
-    private $contacto;
-    private $aLaAtencionDe;
-    private $observaciones;
+    private $name;
+    private $telephone;
+    private $contact;
+    private $atentionTo;
+    private $observations;
 
     public function __construct(
         string $nif,
-        string $nombre,
-        string $telefono,
-        string $contacto,
-        string $aLaAtencionDe,
-        string $observaciones
+        string $name,
+        string $telephone,
+        string $contact,
+        string $atentionTo,
+        string $observations
     ) {
         $this->nif = $nif;
-        $this->nombre = $nombre;
-        $this->telefono = $telefono;
-        $this->contacto = $contacto;
-        $this->aLaAtencionDe = $aLaAtencionDe;
-        $this->observaciones = $observaciones;
+        $this->name = $name;
+        $this->telephone = $telephone;
+        $this->contact = $contact;
+        $this->atentionTo = $atentionTo;
+        $this->observations = $observations;
     }
 
     public function getNif(): string
@@ -32,30 +32,28 @@ class ShippingUser
         return $this->nif;
     }
 
-    public function getNombre(): string
+    public function getName(): string
     {
-        return $this->nombre;
+        return $this->name;
     }
 
-    public function getTelefono(): string
+    public function getTelephone(): string
     {
-        return $this->telefono;
+        return $this->telephone;
     }
 
-    public function getContacto(): string
+    public function getContact(): string
     {
-        return $this->contacto;
+        return $this->contact;
     }
 
-    public function getALaAtencionDe(): string
+    public function getAtentionTo(): string
     {
-        return $this->aLaAtencionDe;
+        return $this->atentionTo;
     }
 
-    public function getObservaciones(): string
+    public function getObservations(): string
     {
-        return $this->observaciones;
+        return $this->observations;
     }
-
-
 }

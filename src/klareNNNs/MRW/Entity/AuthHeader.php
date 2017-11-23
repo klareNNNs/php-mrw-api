@@ -4,19 +4,24 @@ namespace klareNNNs\MRW\Entity;
 
 class AuthHeader
 {
-    var $CodigoFranquicia;//string
-    var $CodigoAbonado;//string
-    var $CodigoDepartamento;//string
-    var $UserName;//string
-    var $Password;//string
+    var $franchiseCode;
+    var $subscriberCode;
+    var $departmentCode;
+    var $userName;
+    var $password;
 
-    function __construct($LoginResponse)
-    {
-        $this->CodigoFranquicia = $LoginResponse['CodigoFranquicia'];
-        $this->CodigoAbonado = $LoginResponse['CodigoAbonado'];
-        $this->CodigoDepartamento = $LoginResponse['CodigoDepartamento'];
-        $this->UserName = $LoginResponse['UserName'];
-        $this->Password = $LoginResponse['Password'];
-
+    public function __construct(
+        string $franchiseCode,
+        string $subscriberCode,
+        string $departmentCode,
+        string $userName,
+        string $password
+    ) {
+        $this->franchiseCode = $franchiseCode;
+        $this->subscriberCode = $subscriberCode;
+        $this->departmentCode = $departmentCode;
+        $this->userName = $userName;
+        $this->password = $password;
     }
+
 }

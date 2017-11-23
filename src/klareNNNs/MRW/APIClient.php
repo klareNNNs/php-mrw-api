@@ -4,65 +4,43 @@ namespace klareNNNs\MRW;
 
 use klareNNNs\MRW\Entity\AuthHeader;
 use klareNNNs\MRW\Entity\Delivery;
-use SoapHeader;
+use klareNNNs\MRW\Entity\ServiceData;
+use klareNNNs\MRW\Entity\ShippingAddress;
+use klareNNNs\MRW\Entity\ShippingUser;
+use klareNNNs\MRW\Services\SoapHeaderFactory;
+use klareNNNs\MRW\Services\SoapRequestFactory;
+use klareNNNs\MRW\Services\SoapResponseFactory;
 use SoapClient;
 
 class ApiClient
 {
+    const TRANSACTION_METHOD = 'TransmEnvio';
     private $client;
-    private $franchiseCode;
-    private $subscriberCode;
-    private $user;
-    private $password;
+    private $authHeader;
 
-    public function __construct(
-        SoapClient $soapClient,
-        string $franchiseCode,
-        string $subscriberCode,
-        string $user,
-        string $password
-    ) {
+    public function __construct(SoapClient $soapClient, AuthHeader $authHeader)
+    {
         $this->client = $soapClient;
-        $this->franchiseCode = $franchiseCode;
-        $this->subscriberCode = $subscriberCode;
-        $this->user = $user;
-        $this->password = $password;
+        $this->authHeader = $authHeader;
     }
 
-    public function createTransaction(array $request)
+    public function createTransaction(
+        ServiceData $serviceData,
+        ShippingAddress $shippingAddress,
+        ShippingUser $shippingUser
+    ): Delivery
     {
         try {
-            $this->initSoapHeaders();
 
-            $response = $this->client->__soapCall('TransmEnvio', $request);
+            $this->client->__setSoapHeaders(array(SoapHeaderFactory::create($this->authHeader)));
+            $request = SoapRequestFactory::create($serviceData, $shippingAddress, $shippingUser);
+            $response = $this->client->__soapCall(self::TRANSACTION_METHOD, $request);
 
-            return new Delivery($response->TransmEnvioResult->Estado, $response->TransmEnvioResult->Mensaje,
-                $response->TransmEnvioResult->NumeroSolicitud, $response->TransmEnvioResult->NumeroEnvio,
-                $response->TransmEnvioResult->Url);
+            return SoapResponseFactory::create($response);
 
         } catch (\SoapFault $e) {
             throw new \Exception();
         }
     }
 
-    private function initSoapHeaders()
-    {
-        try {
-            $namespace = 'http://www.mrw.es/';
-            $auth = [
-                'CodigoFranquicia' => $this->franchiseCode,
-                'CodigoAbonado' => $this->subscriberCode,
-                'CodigoDepartamento' => '',
-                'UserName' => $this->user,
-                'Password' => $this->password
-            ];
-
-            $AuthHeader = new AuthHeader($auth);
-            $header = new SoapHeader($namespace, 'AuthInfo', $AuthHeader);
-            $this->client->__setSoapHeaders(array($header));
-
-        } catch (\Exception $e) {
-            throw new \Exception;
-        }
-    }
 }

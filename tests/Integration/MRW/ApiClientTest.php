@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use klareNNNs\MRW\ApiClient;
+use klareNNNs\MRW\Entity\AuthHeader;
 
 class IntegrationApiClientTest extends TestCase
 {
@@ -28,7 +29,9 @@ class IntegrationApiClientTest extends TestCase
         $user = getenv('USER');
         $password = getenv('PASSWORD');
 
-        $apiClient = new ApiClient($soap, $franchiseCode, $subscriberCode, $user, $password);
+        $authHeader = new AuthHeader($franchiseCode, $subscriberCode, '', $user, $password);
+
+        $apiClient = new ApiClient($soap, $authHeader);
 
         $request = [
             "TransmEnvio" => [

@@ -12,7 +12,7 @@ use klareNNNs\MRW\Services\SoapRequestFactory;
 use klareNNNs\MRW\Services\SoapResponseFactory;
 use SoapClient;
 
-class ApiClient
+class Client
 {
     const TRANSACTION_METHOD = 'TransmEnvio';
     private $client;

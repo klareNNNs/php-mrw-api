@@ -1,13 +1,13 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use klareNNNs\MRW\Client;
+use klareNNNs\MRW\Entity\AuthHeader;
 use klareNNNs\MRW\Entity\ServiceData;
 use klareNNNs\MRW\Entity\ShippingAddress;
 use klareNNNs\MRW\Entity\ShippingUser;
-use PHPUnit\Framework\TestCase;
-use klareNNNs\MRW\ApiClient;
-use klareNNNs\MRW\Entity\AuthHeader;
 
-class IntegrationApiClientTest extends TestCase
+class ClientTest extends TestCase
 {
     const TEST_SOAP_CLIENT = 'http://sagec-test.mrw.es/MRWEnvio.asmx?WSDL';
 
@@ -21,9 +21,9 @@ class IntegrationApiClientTest extends TestCase
         $password = '';
         $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
 
-        $apiClient = new ApiClient($soap, $auth);
+        $apiClient = new Client($soap, $auth);
 
-        $this->assertInstanceOf('\klareNNNs\MRW\ApiClient', $apiClient);
+        $this->assertInstanceOf('\klareNNNs\MRW\Client', $apiClient);
     }
 
     public function testCanQueryAgainstMRW()
@@ -36,7 +36,7 @@ class IntegrationApiClientTest extends TestCase
         $password = getenv('PASSWORD');
         $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
 
-        $apiClient = new ApiClient($soap, $auth);
+        $apiClient = new Client($soap, $auth);
 
 
         $date = date("dd/mm/YY");
@@ -78,7 +78,7 @@ class IntegrationApiClientTest extends TestCase
 
         $delivery = $apiClient->createTransaction($serviceData, $shippingAddress, $shippingUser);
 
-        $this->assertInstanceOf('\klareNNNs\MRW\ApiClient', $apiClient);
+        $this->assertInstanceOf('\klareNNNs\MRW\Client', $apiClient);
         $this->assertInstanceOf('\klareNNNs\MRW\Entity\Delivery', $delivery);
     }
 
@@ -92,7 +92,7 @@ class IntegrationApiClientTest extends TestCase
         $password = '';
         $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
 
-        $apiClient = new ApiClient($soap, $auth);
+        $apiClient = new Client($soap, $auth);
 
 
         $date = date("dd/mm/YY");
@@ -134,7 +134,7 @@ class IntegrationApiClientTest extends TestCase
 
         $delivery = $apiClient->createTransaction($serviceData, $shippingAddress, $shippingUser);
 
-        $this->assertInstanceOf('\klareNNNs\MRW\ApiClient', $apiClient);
+        $this->assertInstanceOf('\klareNNNs\MRW\Client', $apiClient);
         $this->assertInstanceOf('\klareNNNs\MRW\Entity\Delivery', $delivery);
         $this->assertTrue($delivery->getMessage() == '1) El usuario especificado no dispone de acceso al sistema, consulte con su franquicia.');
         $this->assertTrue($delivery->getState() == 0);

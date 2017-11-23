@@ -1,9 +1,9 @@
 <?php
 
-namespace MRW;
+namespace klareNNNs\MRW;
 
-use MRW\Entity\AuthHeader;
-use MRW\Entity\Delivery;
+use klareNNNs\MRW\Entity\AuthHeader;
+use klareNNNs\MRW\Entity\Delivery;
 use SoapHeader;
 use SoapClient;
 

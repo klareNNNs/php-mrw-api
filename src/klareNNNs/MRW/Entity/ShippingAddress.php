@@ -1,6 +1,6 @@
 <?php
 
-namespace MRW\Entity;
+namespace klareNNNs\MRW\Entity;
 
 class ShippingAddress
 {

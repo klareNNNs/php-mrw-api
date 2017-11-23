@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use MRW\ApiClient;
+use klareNNNs\MRW\ApiClient;
 
 class IntegrationApiClientTest extends TestCase
 {
@@ -17,7 +17,7 @@ class IntegrationApiClientTest extends TestCase
 
         $apiClient = new ApiClient($soap, $franchiseCode, $subscriberCode, $user, $password);
 
-        $this->assertInstanceOf('MRW\ApiClient', $apiClient);
+        $this->assertInstanceOf('\klareNNNs\MRW\ApiClient', $apiClient);
     }
 
     public function testCanQueryAgainstMRW()
@@ -70,7 +70,7 @@ class IntegrationApiClientTest extends TestCase
         ];
 
         $response = $apiClient->createTransaction($request);
-        $this->assertInstanceOf('MRW\Entity\Delivery', $response);
+        $this->assertInstanceOf('klareNNNs\MRW\Entity\Delivery', $response);
 
 //        echo "========= ESTADO =========" . PHP_EOL;
 //        var_dump($response->TransmEnvioResult->Estado);

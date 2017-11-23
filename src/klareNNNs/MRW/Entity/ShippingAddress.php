@@ -4,144 +4,72 @@ namespace klareNNNs\MRW\Entity;
 
 class ShippingAddress
 {
-    private $CodigoDireccion;
-    private $CodigoTipoVia;
-    private $Via;
-    private $Numero;
-    private $Resto;
-    private $CodigoPostal;
-    private $Poblacion;
-    private $Provincia;
-    private $Estado;
-    private $CodigoPais;
-    private $TipoPuntoEntrega;
-    private $CodigoPuntoEntrega;
-    private $CodigoFranquiciaAsociadaPuntoEntrega;
-    private $TipoPuntoRecogida;
-    private $CodigoPuntoRecogida;
-    private $CodigoFranquiciaAsociadaPuntoRecogida;
-    private $Agencia;
+    private $addressCode;
+    private $viaType;
+    private $via;
+    private $number;
+    private $other;
+    private $postalCode;
+    private $city;
+    private $countryCode;
 
     public function __construct(
-        string $CodigoDireccion,
-        string $CodigoTipoVia,
-        string $Via,
-        string $Numero,
-        string $Resto,
-        string $CodigoPostal,
-        string $Poblacion,
-        string $Provincia,
-        string $Estado,
-        string $CodigoPais,
-        string $TipoPuntoEntrega,
-        string $CodigoPuntoEntrega,
-        string $CodigoFranquiciaAsociadaPuntoEntrega,
-        string $TipoPuntoRecogida,
-        string $CodigoPuntoRecogida,
-        string $CodigoFranquiciaAsociadaPuntoRecogida,
-        string $Agencia
+        string $addressCode,
+        string $viaType,
+        string $via,
+        string $number,
+        string $other,
+        string $postalCode,
+        string $city,
+        string $countryCode
     ) {
-        $this->CodigoDireccion = $CodigoDireccion;
-        $this->CodigoTipoVia = $CodigoTipoVia;
-        $this->Via = $Via;
-        $this->Numero = $Numero;
-        $this->Resto = $Resto;
-        $this->CodigoPostal = $CodigoPostal;
-        $this->Poblacion = $Poblacion;
-        $this->Provincia = $Provincia;
-        $this->Estado = $Estado;
-        $this->CodigoPais = $CodigoPais;
-        $this->TipoPuntoEntrega = $TipoPuntoEntrega;
-        $this->CodigoPuntoEntrega = $CodigoPuntoEntrega;
-        $this->CodigoFranquiciaAsociadaPuntoEntrega = $CodigoFranquiciaAsociadaPuntoEntrega;
-        $this->TipoPuntoRecogida = $TipoPuntoRecogida;
-        $this->CodigoPuntoRecogida = $CodigoPuntoRecogida;
-        $this->CodigoFranquiciaAsociadaPuntoRecogida = $CodigoFranquiciaAsociadaPuntoRecogida;
-        $this->Agencia = $Agencia;
+        $this->addressCode = $addressCode;
+        $this->viaType = $viaType;
+        $this->via = $via;
+        $this->number = $number;
+        $this->other = $other;
+        $this->postalCode = $postalCode;
+        $this->city = $city;
+        $this->countryCode = $countryCode;
     }
 
-    public function getCodigoDireccion(): string
+    public function getAddressCode(): string
     {
-        return $this->CodigoDireccion;
+        return $this->addressCode;
     }
 
-    public function getCodigoTipoVia(): string
+    public function getViaType(): string
     {
-        return $this->CodigoTipoVia;
+        return $this->viaType;
     }
 
     public function getVia(): string
     {
-        return $this->Via;
+        return $this->via;
     }
 
-    public function getNumero(): string
+    public function getNumber(): string
     {
-        return $this->Numero;
+        return $this->number;
     }
 
-    public function getResto(): string
+    public function getOther(): string
     {
-        return $this->Resto;
+        return $this->other;
     }
 
-    public function getCodigoPostal(): string
+    public function getPostalCode(): string
     {
-        return $this->CodigoPostal;
+        return $this->postalCode;
     }
 
-    public function getPoblacion(): string
+    public function getCity(): string
     {
-        return $this->Poblacion;
+        return $this->city;
     }
 
-    public function getProvincia(): string
+    public function getCountryCode(): string
     {
-        return $this->Provincia;
-    }
-
-    public function getEstado(): string
-    {
-        return $this->Estado;
-    }
-
-    public function getCodigoPais(): string
-    {
-        return $this->CodigoPais;
-    }
-
-    public function getTipoPuntoEntrega(): string
-    {
-        return $this->TipoPuntoEntrega;
-    }
-
-    public function getCodigoPuntoEntrega(): string
-    {
-        return $this->CodigoPuntoEntrega;
-    }
-
-    public function getCodigoFranquiciaAsociadaPuntoEntrega(): string
-    {
-        return $this->CodigoFranquiciaAsociadaPuntoEntrega;
-    }
-
-    public function getTipoPuntoRecogida(): string
-    {
-        return $this->TipoPuntoRecogida;
-    }
-
-    public function getCodigoPuntoRecogida(): string
-    {
-        return $this->CodigoPuntoRecogida;
-    }
-
-    public function getCodigoFranquiciaAsociadaPuntoRecogida(): string
-    {
-        return $this->CodigoFranquiciaAsociadaPuntoRecogida;
-    }
-
-    public function getAgencia(): string
-    {
-        return $this->Agencia;
+        return $this->countryCode;
     }
 }

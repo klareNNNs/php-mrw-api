@@ -4,40 +4,41 @@ namespace MRW\Entity;
 
 class Delivery
 {
-
-    private $estado;
-    private $mensaje;
-    private $numeroSolicitud;
-    private $numeroEnvio;
+    private $state;
+    private $message;
+    private $requestNumber;
+    private $shippingNumber;
     private $url;
 
-    public function __construct(string $estado,string $mensaje,string $numeroSolicitud,string $numeroEnvio,string $url)
+    public function __construct(
+        string $state, string $message, string $requestNumber, string $shippingNumber, string $url
+    )
     {
-        $this->estado = $estado;
-        $this->mensaje = $mensaje;
-        $this->numeroSolicitud = $numeroSolicitud;
-        $this->numeroEnvio = $numeroEnvio;
+        $this->state = $state;
+        $this->message = $message;
+        $this->requestNumber = $requestNumber;
+        $this->shippingNumber = $shippingNumber;
         $this->url = $url;
     }
 
-    public function getEstado(): string
+    public function getState(): string
     {
-        return $this->estado;
+        return $this->state;
     }
 
-    public function getMensaje(): string
+    public function getMessage(): string
     {
-        return $this->mensaje;
+        return $this->message;
     }
 
-    public function getNumeroSolicitud(): string
+    public function getRequestNumber(): string
     {
-        return $this->numeroSolicitud;
+        return $this->requestNumber;
     }
 
-    public function getNumeroEnvio(): string
+    public function getShippingNumber(): string
     {
-        return $this->numeroEnvio;
+        return $this->shippingNumber;
     }
 
     public function getUrl(): string
@@ -47,11 +48,10 @@ class Delivery
 
     public function getTicketUrl(): string
     {
-        $franquicia = substr($this->getNumeroSolicitud(),0,5);
-        $abonado = substr($this->getNumeroSolicitud(),5,6);
-        $ticketUrl = $this->getUrl().'?Franq='.$franquicia.'&Ab='.$abonado.'&Dep=&Pwd=password&Usr=user&NumEnv='.$this->getNumeroEnvio();
+        $franquicia = substr($this->getRequestNumber(), 0, 5);
+        $abonado = substr($this->getRequestNumber(), 5, 6);
+        $ticketUrl = $this->getUrl() . '?Franq=' . $franquicia . '&Ab=' . $abonado . '&Dep=&Pwd=password&Usr=user&NumEnv=' . $this->getShippingNumber();
 
         return $ticketUrl;
     }
-
 }

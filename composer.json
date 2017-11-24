@@ -1,5 +1,5 @@
 {
-  "name": "klareNNNs/php-mrw-api",
+  "name": "klarennns/php-mrw-api",
   "type": "project",
   "description": "Api Client to connectto MRW Services",
   "keywords": [
@@ -7,11 +7,12 @@
     "Client",
     "MRW"
   ],
-  "homepage": "https://github.com/klareNNNs/php-mrw-api",
+  "homepage": "https://github.com/klarennns/php-mrw-api",
   "license": "MIT",
   "authors": [
     {
       "name": "Albert Claret",
+      "email": "klarensone@gmail.com",
       "role": "Developer"
     }
   ],

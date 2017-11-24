@@ -1,9 +1,22 @@
 {
+  "name": "klareNNNs/php-mrw-api",
   "type": "project",
-  "license": "proprietary",
-  "minimum-stability": "beta",
+  "description": "Api Client to connectto MRW Services",
+  "keywords": [
+    "Api",
+    "Client",
+    "MRW"
+  ],
+  "homepage": "https://github.com/klareNNNs/php-mrw-api",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Albert Claret",
+      "role": "Developer"
+    }
+  ],
   "require": {
-    "php": "^7.0"
+    "php": ">=7.0"
   },
   "autoload": {
     "psr-4": {

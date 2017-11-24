@@ -35,7 +35,7 @@ class SoapRequestFactoryTest extends TestCase
                         'Fecha' => date("dd/mm/YY"),
                         'Referencia' => 'BWZXTFSZU',
                         'EnFranquicia' => 'N',
-                        'CodigoServicio' => '0200',
+                        'CodigoServicio' => '0800',
                         'DescripcionServicio' => '',
                         'Bultos' => '',
                         'NumeroBultos' => '1',
@@ -44,6 +44,32 @@ class SoapRequestFactoryTest extends TestCase
                         'Retorno' => 'N',
                         'Reembolso' => 'O',
                         'ImporteReembolso' => '25,9',
+                        'Notificaciones' => [
+                            'NotificacionRequest' =>
+                                [
+                                    'CanalNotificacion' => '1',
+                                    'TipoNotificacion' => '2',
+                                    'MailSMS' => 'test@test.com',
+                                ],
+                            'NotificacionRequest' =>
+                                [
+                                    'CanalNotificacion' => '2',
+                                    'TipoNotificacion' => '2',
+                                    'MailSMS' => '666666666',
+                                ],
+                            'NotificacionRequest' =>
+                                [
+                                    'CanalNotificacion' => '1',
+                                    'TipoNotificacion' => '4',
+                                    'MailSMS' => 'test@test.com',
+                                ],
+                            'NotificacionRequest' =>
+                                [
+                                    'CanalNotificacion' => '2',
+                                    'TipoNotificacion' => '4',
+                                    'MailSMS' => '666666666',
+                                ]
+                        ]
                     ]
                 ]
             ]
@@ -52,7 +78,7 @@ class SoapRequestFactoryTest extends TestCase
         $date = date("dd/mm/YY");
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
-        $serviceCode = '0200';
+        $serviceCode = '0800';
         $serviceDescription = '';
         $items = '';
         $numberOfItems = '1';
@@ -61,9 +87,13 @@ class SoapRequestFactoryTest extends TestCase
         $return = 'N';
         $refund = 'O';
         $refundAmount = '25,9';
+        $notificationsMail = 'test@test.com';
+        $notificationsSMS = '666666666';
+
 
         $serviceData = new ServiceData($date, $reference, $onFranchise, $serviceCode, $serviceDescription, $items,
-            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount);
+            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount, $notificationsMail,
+            $notificationsSMS);
 
         $addressCode = '';
         $viaType = '';

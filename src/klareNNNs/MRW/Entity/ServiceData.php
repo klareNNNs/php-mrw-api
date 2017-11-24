@@ -16,6 +16,8 @@ class ServiceData
     private $return;
     private $refund;
     private $refundAmount;
+    private $notificationsMail;
+    private $notificationsSMS;
 
     public function __construct(
         string $date,
@@ -29,7 +31,9 @@ class ServiceData
         string $saturdayDelivery,
         string $return,
         string $refund,
-        string $refundAmount
+        string $refundAmount,
+        string $notificationsMail,
+        string $notificationsSMS
     ) {
         $this->date = $date;
         $this->reference = $reference;
@@ -43,6 +47,8 @@ class ServiceData
         $this->return = $return;
         $this->refund = $refund;
         $this->refundAmount = $refundAmount;
+        $this->notificationsMail = $notificationsMail;
+        $this->notificationsSMS = $notificationsSMS;
     }
 
     public function getDate(): string
@@ -103,6 +109,16 @@ class ServiceData
     public function getRefundAmount(): string
     {
         return $this->refundAmount;
+    }
+
+    public function getNotificationsMail(): string
+    {
+        return $this->notificationsMail;
+    }
+
+    public function getNotificationsSMS(): string
+    {
+        return $this->notificationsSMS;
     }
 
 }

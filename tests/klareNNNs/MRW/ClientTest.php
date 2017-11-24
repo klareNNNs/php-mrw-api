@@ -42,7 +42,7 @@ class ClientTest extends TestCase
         $date = date("dd/mm/YY");
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
-        $serviceCode = '0200';
+        $serviceCode = '0800';
         $serviceDescription = '';
         $items = '';
         $numberOfItems = '1';
@@ -51,9 +51,11 @@ class ClientTest extends TestCase
         $return = 'N';
         $refund = 'O';
         $refundAmount = '25,9';
+        $notificationsMail = 'test@test.com';
+        $notificationsSMS = '666666666';
 
         $serviceData = new ServiceData($date, $reference, $onFranchise, $serviceCode, $serviceDescription, $items,
-            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount);
+            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount, $notificationsMail, $notificationsSMS);
 
         $addressCode = '';
         $viaType = '';
@@ -98,7 +100,7 @@ class ClientTest extends TestCase
         $date = date("dd/mm/YY");
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
-        $serviceCode = '0200';
+        $serviceCode = '0800';
         $serviceDescription = '';
         $items = '';
         $numberOfItems = '1';
@@ -107,9 +109,11 @@ class ClientTest extends TestCase
         $return = 'N';
         $refund = 'O';
         $refundAmount = '25,9';
+        $notificationsMail = 'test@test.com';
+        $notificationsSMS = '666666666';
 
         $serviceData = new ServiceData($date, $reference, $onFranchise, $serviceCode, $serviceDescription, $items,
-            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount);
+            $numberOfItems, $weight, $saturdayDelivery, $return, $refund, $refundAmount, $notificationsMail, $notificationsSMS);
 
         $addressCode = '';
         $viaType = '';

@@ -38,5 +38,7 @@ class ServiceDataTest extends TestCase
         $this->assertEquals($return, $serviceData->getReturn());
         $this->assertEquals($refund, $serviceData->getRefund());
         $this->assertEquals($refundAmount, $serviceData->getRefundAmount());
+        $this->assertEquals($notificationsMail, $serviceData->getNotificationsMail());
+        $this->assertEquals($notificationsSMS, $serviceData->getNotificationsSMS());
     }
 }

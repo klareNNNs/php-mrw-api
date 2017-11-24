@@ -8,7 +8,7 @@ PHP Library to Wrap MRW API
 # Installation
 
 ```
-$ composer require klareNNNs/php-mrw-api
+$ composer require klarennns/php-mrw-api
 ```
 
 # Testing And Coverage

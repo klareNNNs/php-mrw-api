@@ -42,11 +42,10 @@ class ClientTest extends TestCase
         $apiClient = new Client($soap, $auth);
 
         $dateTime = new DateTime();
-//        $dateTime->modify('next monday');
         $date = $dateTime->format('d/m/Y');
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
-        $serviceCode = '0800';
+        $serviceCode = '0200';
         $serviceDescription = '';
         $items = '';
         $numberOfItems = '1';
@@ -63,8 +62,8 @@ class ClientTest extends TestCase
 
         $addressCode = '';
         $viaType = '';
-        $via = 'Calle Ramon y Cajal';
-        $number = '22';
+        $via = 'Calle Ramon y Cajal 22';
+        $number = '';
         $other = '';
         $postalCode = '08402';
         $city = 'Granollers';
@@ -74,7 +73,7 @@ class ClientTest extends TestCase
             $countryCode);
 
         $nif = '';
-        $name = 'Jorge';
+        $name = 'Jorge Xavier';
         $telephone = '666666666';
         $contact = 'Jorge';
         $atentionTo = 'Jorge';
@@ -122,8 +121,8 @@ class ClientTest extends TestCase
 
         $addressCode = '';
         $viaType = '';
-        $via = 'Calle Ramon y Cajal';
-        $number = '22';
+        $via = 'Calle Ramon y Cajal 22';
+        $number = '';
         $other = '';
         $postalCode = '08402';
         $city = 'Granollers';
@@ -133,7 +132,7 @@ class ClientTest extends TestCase
             $countryCode);
 
         $nif = '';
-        $name = 'Jorge';
+        $name = 'Jorge Xavier';
         $telephone = '666666666';
         $contact = 'Jorge';
         $atentionTo = 'Jorge';

@@ -1,5 +1,8 @@
 <?php
 
+
+// $ export FRANCHISE=00620 SUBSCRIBER=017017 USER=SG00620LATOSTADORA PASSWORD=SG00620LATOSTADORA phpunit
+
 use PHPUnit\Framework\TestCase;
 use klareNNNs\MRW\Client;
 use klareNNNs\MRW\Entity\AuthHeader;
@@ -82,15 +85,16 @@ class ClientTest extends TestCase
 
         $this->assertInstanceOf('\klareNNNs\MRW\Client', $apiClient);
         $this->assertInstanceOf('\klareNNNs\MRW\Entity\Delivery', $delivery);
+        $this->assertEquals(1, $delivery->getState());
     }
 
     public function testApiClientCanNotLog()
     {
         $soap = new SoapClient(self::TEST_SOAP_CLIENT, array('trace' => 1, "exceptions" => 0));
-        $franchise = getenv('FRANCHISE');
-        $subscriber = getenv('SUBSCRIBER');
-        $department = getenv('DEPARTMENT');
-        $user = getenv('USER');
+        $franchise = '';
+        $subscriber = '';
+        $department = '';
+        $user = '';
         $password = '';
         $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
 

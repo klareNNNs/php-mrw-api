@@ -11,7 +11,14 @@ class SoapHeaderFactory
 
     public static function create(AuthHeader $authHeader)
     {
-        $soapHeader = new SoapHeader(self::NAMESPACE, 'AuthInfo', $authHeader);
+        $auth = [
+            'CodigoFranquicia' => $authHeader->franchiseCode,
+            'CodigoAbonado' => $authHeader->subscriberCode,
+            'CodigoDepartamento' => $authHeader->departmentCode,
+            'UserName' => $authHeader->userName,
+            'Password' => $authHeader->password,
+        ];
+        $soapHeader = new SoapHeader(self::NAMESPACE, 'AuthInfo', $auth);
 
         return $soapHeader;
     }

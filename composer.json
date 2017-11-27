@@ -2,6 +2,7 @@
   "name": "klarennns/php-mrw-api",
   "type": "project",
   "description": "Api Client to connectto MRW Services",
+  "minimum-stability": "dev",
   "keywords": [
     "Api",
     "Client",
@@ -17,7 +18,8 @@
     }
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "symfony/var-dumper": "^3.4"
   },
   "autoload": {
     "psr-4": {

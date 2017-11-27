@@ -30,6 +30,8 @@ class Client
         $request = SoapRequestFactory::create($data, $address, $user);
         $response = $this->client->__soapCall(self::TRANSACTION_METHOD, $request);
 
+//        dump($this->client); die;
+
         return SoapResponseFactory::create($response);
     }
 

@@ -45,30 +45,28 @@ class SoapRequestFactoryTest extends TestCase
                         'Reembolso' => 'O',
                         'ImporteReembolso' => '25,9',
                         'Notificaciones' => [
-                            'NotificacionRequest' =>
+                            'NotificacionRequest' => [
                                 [
                                     'CanalNotificacion' => '1',
                                     'TipoNotificacion' => '2',
                                     'MailSMS' => 'test@test.com',
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '2',
                                     'TipoNotificacion' => '2',
                                     'MailSMS' => '666666666',
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '1',
                                     'TipoNotificacion' => '4',
                                     'MailSMS' => 'test@test.com',
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '2',
                                     'TipoNotificacion' => '4',
                                     'MailSMS' => '666666666',
                                 ]
+                            ]
                         ]
                     ]
                 ]

@@ -45,30 +45,29 @@ class SoapRequestFactory
                         'Reembolso' => $data->getRefund(),
                         'ImporteReembolso' => $data->getRefundAmount(),
                         'Notificaciones' => [
-                            'NotificacionRequest' =>
+                            'NotificacionRequest' =>[
                                 [
                                     'CanalNotificacion' => '1',
                                     'TipoNotificacion' => '2',
                                     'MailSMS' => $data->getNotificationsMail(),
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '2',
                                     'TipoNotificacion' => '2',
                                     'MailSMS' => $data->getNotificationsSMS(),
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '1',
                                     'TipoNotificacion' => '4',
                                     'MailSMS' => $data->getNotificationsMail(),
                                 ],
-                            'NotificacionRequest' =>
                                 [
                                     'CanalNotificacion' => '2',
                                     'TipoNotificacion' => '4',
                                     'MailSMS' => $data->getNotificationsSMS(),
                                 ]
+
+                            ]
                         ]
                     ]
                 ]

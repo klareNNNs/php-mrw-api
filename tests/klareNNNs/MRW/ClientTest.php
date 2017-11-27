@@ -41,8 +41,9 @@ class ClientTest extends TestCase
 
         $apiClient = new Client($soap, $auth);
 
-
-        $date = date("dd/mm/YY");
+        $dateTime = new DateTime();
+//        $dateTime->modify('next monday');
+        $date = $dateTime->format('d/m/Y');
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
         $serviceCode = '0800';

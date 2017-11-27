@@ -11,8 +11,38 @@ class SoapRequestFactory
     public static function create(ServiceData $data, ShippingAddress $address, ShippingUser $user): array
     {
         return [
-            "TransmEnvio" => [
-                "request" => [
+            'TransmEnvio' => [
+                'request' => [
+                    'DatosRecogida' => [
+                        'Direccion' => [
+                            'CodigoDireccion' => '',
+                            'CodigoTipoVia' => '',
+                            'Via' => '',
+                            'Numero' => '',
+                            'Resto' => '',
+                            'CodigoPostal' => '',
+                            'Poblacion' => '',
+                            'CodigoPais' => '',
+                            'TipoPuntoEntrega' => '',
+                            'CodigoPuntoEntrega' => '',
+                            'CodigoFranquiciaAsociadaPuntoEntrega' => '',
+                            'Agencia' => '',
+                        ],
+                        'Nif' => '',
+                        'Nombre' => '',
+                        'Telefono' => '',
+                        'Contacto' => '',
+                        'ALaAtencionDe' => '',
+                        'Observaciones' => '',
+                        'Horario' => [
+                            'Rangos' => [
+                                'HorarioRangoRequest' => [
+                                    'Desde' => '09:00',
+                                    'Hasta' => '18:00',
+                                ]
+                            ]
+                        ],
+                    ],
                     'DatosEntrega' => [
                         'Direccion' => [
                             'CodigoDireccion' => $address->getAddressCode(),
@@ -30,6 +60,14 @@ class SoapRequestFactory
                         'Contacto' => $user->getContact(),
                         'ALaAtencionDe' => $user->getAtentionTo(),
                         'Observaciones' => $user->getObservations(),
+                        'Horario' => [
+                            'Rangos' => [
+                                'HorarioRangoRequest' => [
+                                    'Desde' => '09:00',
+                                    'Hasta' => '18:00',
+                                ]
+                            ]
+                        ],
                     ],
                     'DatosServicio' => [
                         'Fecha' => $data->getDate(),

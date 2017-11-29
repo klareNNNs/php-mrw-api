@@ -29,7 +29,7 @@ class ClientTest extends TestCase
         $this->assertInstanceOf('\klareNNNs\MRW\Client', $apiClient);
     }
 
-    public function testCanQueryAgainstMRW()
+    public function testCanCreateTransaction()
     {
         $soap = new SoapClient(self::TEST_SOAP_CLIENT, array('trace' => 1, "exceptions" => 0));
         $franchise = getenv('FRANCHISE');
@@ -45,7 +45,7 @@ class ClientTest extends TestCase
         $date = $dateTime->format('d/m/Y');
         $reference = 'BWZXTFSZU';
         $onFranchise = 'N';
-        $serviceCode = '0200';
+        $serviceCode = '0800';
         $serviceDescription = '';
         $items = '';
         $numberOfItems = '1';
@@ -88,7 +88,7 @@ class ClientTest extends TestCase
         $this->assertEquals(1, $delivery->getState());
     }
 
-    public function testApiClientCanNotLog()
+    public function testCanNotLogOnTransaction()
     {
         $soap = new SoapClient(self::TEST_SOAP_CLIENT, array('trace' => 1, "exceptions" => 0));
         $franchise = '';
@@ -146,6 +146,43 @@ class ClientTest extends TestCase
         $this->assertInstanceOf('\klareNNNs\MRW\Entity\Delivery', $delivery);
         $this->assertTrue($delivery->getMessage() == '1) El usuario especificado no dispone de acceso al sistema, consulte con su franquicia.');
         $this->assertTrue($delivery->getState() == 0);
+    }
+
+    public function testCanGetTicketFile()
+    {
+        $soap = new SoapClient(self::TEST_SOAP_CLIENT, array('trace' => 1, "exceptions" => 0));
+        $franchise = getenv('FRANCHISE');
+        $subscriber = getenv('SUBSCRIBER');
+        $department = getenv('DEPARTMENT');
+        $user = getenv('USER');
+        $password = getenv('PASSWORD');
+        $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
+
+        $apiClient = new Client($soap, $auth);
+
+        $orderId = getenv('ORDERID');
+        $ticket = $apiClient->getTicketFile($orderId);
+
+        $this->assertEquals(1, $ticket->GetEtiquetaEnvioResult->Estado);
+    }
+
+
+    public function testTicketFileNotExist()
+    {
+        $soap = new SoapClient(self::TEST_SOAP_CLIENT, array('trace' => 1, "exceptions" => 0));
+        $franchise = getenv('FRANCHISE');
+        $subscriber = getenv('SUBSCRIBER');
+        $department = getenv('DEPARTMENT');
+        $user = getenv('USER');
+        $password = getenv('PASSWORD');
+        $auth = new AuthHeader($franchise, $subscriber, $department, $user, $password);
+
+        $apiClient = new Client($soap, $auth);
+
+        $orderId = '00620';
+        $ticket = $apiClient->getTicketFile($orderId);
+
+        $this->assertEquals(0, $ticket->GetEtiquetaEnvioResult->Estado);
     }
 
 }

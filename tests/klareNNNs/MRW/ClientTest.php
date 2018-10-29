@@ -1,8 +1,5 @@
 <?php
 
-
-// $ export FRANCHISE=00620 SUBSCRIBER=017017 USER=SG00620LATOSTADORA PASSWORD=SG00620LATOSTADORA phpunit
-
 use PHPUnit\Framework\TestCase;
 use klareNNNs\MRW\Client;
 use klareNNNs\MRW\Entity\AuthHeader;
@@ -77,7 +74,7 @@ class ClientTest extends TestCase
         $telephone = '666666666';
         $contact = 'Jorge';
         $atentionTo = 'Jorge';
-        $observations = '';
+        $observations = 'entregar por la tarde';
 
         $shippingUser = new ShippingUser($nif, $name, $telephone, $contact, $atentionTo, $observations);
 
